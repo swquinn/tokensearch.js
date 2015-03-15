@@ -30,7 +30,7 @@ describe('./lib/tokensearch.js - edge cases', function() {
     var failed = false;
     try {
       //WHEN
-      tokenSearch = new Tokensearch(users, { collectionKey: null });
+      tokenSearch = new Tokensearch(users, { collectionKeys: null });
     } catch (ex) {
       failed = true;
     }
@@ -43,7 +43,7 @@ describe('./lib/tokensearch.js - edge cases', function() {
     var failed = false;
     try {
       //WHEN
-      tokenSearch = new Tokensearch(null, { collectionKey: 'name' });
+      tokenSearch = new Tokensearch(null, { collectionKeys: ['name'] });
     } catch (ex) {
       failed = true;
     }
@@ -56,7 +56,7 @@ describe('./lib/tokensearch.js - edge cases', function() {
     var failed = false;
     try {
       //WHEN
-      tokenSearch = new Tokensearch([], { collectionKey: 'name' });
+      tokenSearch = new Tokensearch([], { collectionKeys: ['name'] });
     } catch (ex) {
       failed = true;
     }

@@ -20,11 +20,11 @@ var users = [{
   "alloted": "M5202"
 }];
 
-describe('./lib/tokensearch.js - config parameter', function() {
+describe('parametertest -', function() {
 
   it('default parameter', function() {
     //GIVEN
-    var tokenSearch = new Tokensearch(users, { collectionKey: 'name' });
+    var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'] });
     //WHEN
     var result = tokenSearch.search('ADAPPA ASHRAY');
     //THEN
@@ -33,16 +33,16 @@ describe('./lib/tokensearch.js - config parameter', function() {
 
   it('threshold parameter', function() {
     //GIVEN
-    var tokenSearch = new Tokensearch(users, { collectionKey: 'name', threshold: 0.1 });
+    var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], threshold: 0.1 });
     //WHEN
-    var result = tokenSearch.search('ADAPPA ASHRAY');
+    var result = tokenSearch.search('ADAPP ASHRA');
     //THEN
     expect(result.length).to.equal(0);
   });
 
   it('delimiter parameter', function() {
     //GIVEN
-    var tokenSearch = new Tokensearch(users, { collectionKey: 'name', delimiter: '-' });
+    var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], delimiter: '-' });
     //WHEN
     var result = tokenSearch.search('IUS-ANOTHE-DELI');
     //THEN
@@ -51,7 +51,7 @@ describe('./lib/tokensearch.js - config parameter', function() {
 
   it('maxFilterTokenEntries parameter', function() {
     //GIVEN
-    var tokenSearch = new Tokensearch(users, { collectionKey: 'name', maxFilterTokenEntries: '1' });
+    var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], maxFilterTokenEntries: '1' });
     //WHEN
     var result = tokenSearch.search('XXX ADAPPA ASHRAY AMARNATH');
     //THEN

@@ -5,12 +5,12 @@ var expect = chai.expect;
 var Tokensearch = require('../lib/tokensearch');
 var users = require('./users.json');
 
-describe('./lib/tokensearch.js - search example', function() {
+describe('searchtest.js -', function() {
   //GIVEN
   var tokenSearch;
 
   beforeEach(function() {
-    tokenSearch = new Tokensearch(users, { collectionKey: 'name' });
+    tokenSearch = new Tokensearch(users, { collectionKeys: ['name'] });
   });
 
   it('regular search', function() {
@@ -18,8 +18,8 @@ describe('./lib/tokensearch.js - search example', function() {
     var result = tokenSearch.search('GUPTA');
 
     //THEN
-    expect(result.length).to.equal(24);
-    expect(result[0].score).to.equal(0.5);
+    expect(result.length).to.equal(25);
+    expect(result[0].score).to.equal(0);
     expect(result[0].item).to.exist();
     expect(result[0].item.name).to.have.string('GUPTA');
   });
@@ -29,7 +29,7 @@ describe('./lib/tokensearch.js - search example', function() {
     var result = tokenSearch.search('gupta');
 
     //THEN
-    expect(result.length).to.equal(24);
+    expect(result.length).to.equal(25);
     expect(result[0].item.name).to.have.string('GUPTA');
   });
 
@@ -46,7 +46,7 @@ describe('./lib/tokensearch.js - search example', function() {
     var result = tokenSearch.search('PATEL DHRUVIN UDAYAN');
 
     //THEN
-    expect(result.length).to.equal(1);
+    expect(result.length).to.equal(9);
     expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
   });
 
@@ -55,13 +55,13 @@ describe('./lib/tokensearch.js - search example', function() {
     var result = tokenSearch.search('PATE DHRUVI UDAYA', 0.8);
 
     //THEN
-    expect(result.length).to.equal(1);
+    expect(result.length).to.equal(2);
     expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
   });
 
   it('search unique name, threshold too big', function() {
     //WHEN
-    var result = tokenSearch.search('PATE DHRUVI UDAYA');
+    var result = tokenSearch.search('PATE DHRUVI UDAYA', 0.1);
 
     //THEN
     expect(result.length).to.equal(0);
@@ -70,8 +70,8 @@ describe('./lib/tokensearch.js - search example', function() {
 });
 
 
-describe('./lib/tokensearch.js -', function() {
-  it('README.md example', function() {
+describe('README.md', function() {
+  it('example should work', function() {
     //GIVEN
     var readmeUser = [{
       "name": "JOHN PETER DOW",
@@ -83,7 +83,7 @@ describe('./lib/tokensearch.js -', function() {
       "name": "BODE JON MULLER",
       "id": "147",
     }];
-    var tokenSearch = new Tokensearch(readmeUser, { collectionKey: 'name' });
+    var tokenSearch = new Tokensearch(readmeUser, { collectionKeys: ['name'] });
 
     //WHEN
     var result = tokenSearch.search('JOHN BAR');
