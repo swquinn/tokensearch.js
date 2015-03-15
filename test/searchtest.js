@@ -3,20 +3,61 @@
 var chai = require('chai');
 var expect = chai.expect;
 var Tokensearch = require('../lib/tokensearch');
+var users = require('./users.json');
 
-describe('./lib/tokensearch.js', function() {
+describe('./lib/tokensearch.js - edge cases', function() {
+
+  it('invalid constructor, no collectionKey', function(done) {
+    try {
+      tokenSearch = new Tokensearch(users);
+      expect(true).to.equal(false);
+    } catch (ex) {
+      done();
+    }
+  });
+
+  it('invalid constructor, null collection', function(done) {
+    try {
+      tokenSearch = new Tokensearch(null);
+      expect(true).to.equal(false);
+    } catch (ex) {
+      done();
+    }
+  });
+
+  it('invalid constructor, empty collection', function(done) {
+    try {
+      tokenSearch = new Tokensearch([]);
+      expect(true).to.equal(false);
+    } catch (ex) {
+      done();
+    }
+  });
+
+});
+
+describe('./lib/tokensearch.js - search example', function() {
   //GIVEN
-  var users;
   var tokenSearch;
 
   beforeEach(function() {
-    users = require('./users.json');
     tokenSearch = new Tokensearch(users, { collectionKey: 'name' });
   });
 
-  it('search john - regular search', function() {
+  it('regular search', function() {
     //WHEN
     var result = tokenSearch.search('JOHN');
+
+    //THEN
+    expect(result.length).to.equal(10);
+    expect(result[0].score).to.equal(0.5);
+    expect(result[0].item).to.exist();
+    expect(result[0].item.name).to.have.string('JOHN');
+  });
+
+  it('regular search, case insensitive', function() {
+    //WHEN
+    var result = tokenSearch.search('john');
 
     //THEN
     expect(result.length).to.equal(10);
@@ -44,15 +85,21 @@ describe('./lib/tokensearch.js', function() {
     expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
   });
 
-  it.only('search exact match, missing last character', function() {
+  it('search unique name, missing last character', function() {
+    //WHEN
+    var result = tokenSearch.search('PATE DHRUVI UDAYA', 0.8);
+
+    //THEN
+    expect(result.length).to.equal(1);
+    expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
+  });
+
+  it('search unique name, threshold too big', function() {
     //WHEN
     var result = tokenSearch.search('PATE DHRUVI UDAYA');
 
     //THEN
-    expect(result.length).to.equal(1);
-    expect(result[0].score).to.equal(0.5);
-    expect(result[0].item).to.exist();
-    expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
+    expect(result.length).to.equal(0);
   });
 
 });
