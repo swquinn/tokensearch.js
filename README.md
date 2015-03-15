@@ -1,23 +1,39 @@
 # tokensearch.js
 
+tokensearch.js is a simple substring search functions for collections.
+
+Inspired by https://github.com/krisk/Fuse
+
 ## Example Usage
 
-Setup:
+**Setup:**
 
 ```
-var users = [{
-  "name": "MUTHKHOD SHRIDEVI SHARANGOWDA",
-  "CML_rank": "64400",
-  "registrationNumber": "1001061",
-  "alloted": null
+var readmeUser = [{
+  "name": "JOHN PETER DOW",
+  "id": "123"
 }, {
-  "name": "ADAPPA ASHRAY AMARNATH",
-  "CML_rank": "42680",
-  "registrationNumber": "1001091",
-  "alloted": "M5207"
+  "name": "FOO BAR JOHN",
+  "id": "127",
+}, {
+  "name": "BODE JON MULLER",
+  "id": "147",
 }];
-var tokenSearch = new Tokensearch(users, { collectionKey: 'name' });
+var tokenSearch = new Tokensearch(readmeUser, { collectionKey: 'name' });
 
 ```
 
-Search:
+**Search:**
+```
+var result = tokenSearch.search('JOHN BAR');
+```
+
+**Result:**
+```
+[
+  {"item":{"name":"FOO BAR JOHN","id":"127"},"score":0.33333333333333337},
+  {"item":{"name":"JOHN PETER DOW","id":"123"},"score":0.6666666666666667}
+]
+```
+Score 0 means a perfect match, score 1 is likely not what you're looking for.
+The original object is wrapped inside the `item` key.

@@ -68,3 +68,28 @@ describe('./lib/tokensearch.js - search example', function() {
   });
 
 });
+
+
+describe('./lib/tokensearch.js -', function() {
+  it('README.md example', function() {
+    //GIVEN
+    var readmeUser = [{
+      "name": "JOHN PETER DOW",
+      "id": "123"
+    }, {
+      "name": "FOO BAR JOHN",
+      "id": "127",
+    }, {
+      "name": "BODE JON MULLER",
+      "id": "147",
+    }];
+    var tokenSearch = new Tokensearch(readmeUser, { collectionKey: 'name' });
+
+    //WHEN
+    var result = tokenSearch.search('JOHN BAR');
+
+    //THEN
+    //console.log(JSON.stringify(result));
+    expect(result.length).to.equal(2);
+  });
+});
