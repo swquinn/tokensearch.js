@@ -1,38 +1,38 @@
 {
-    "name": "tokensearch.js",
-    "version": "0.5.3",
-    "description": "Substring token search",
-    "main": "./lib/tokensearch.min.js",
-    "author": {
-        "name": "Michael Vogt",
-        "email": "michael@neeo.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/neophob/tokensearch.js.git"
-    },
-    "keywords": [
-        "string search",
-        "token",
-        "substring",
-        "collection"
-    ],
-    "license": "MIT",
-    "devDependencies": {
-        "mocha": "~1.20.1",
-        "chai": "~1.10.0",
-        "uglify-js": "~2.4.17"
-    },
-    "engines": {
-        "node": ">=0.10.0"
-    },
-    "bugs": {
-        "url": "https://github.com/neophob/tokensearch.js/issues"
-    },
-    "scripts": {
-        "test": "./node_modules/.bin/mocha --reporter list",
-        "clean": "rm ./lib/tokensearch.min.js",
-        "build": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js",
-        "release": "npm test && npm version patch -m 'Upgrade version to %s' && npm run-script build && npm run-script publish"
-    }
+  "name": "tokensearch.js",
+  "version": "0.5.4",
+  "description": "Substring token search",
+  "main": "./lib/tokensearch.min.js",
+  "author": {
+    "name": "Michael Vogt",
+    "email": "michael@neeo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/neophob/tokensearch.js.git"
+  },
+  "keywords": [
+    "string search",
+    "token",
+    "substring",
+    "collection"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.20.1",
+    "chai": "~1.10.0",
+    "uglify-js": "~2.4.17"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bugs": {
+    "url": "https://github.com/neophob/tokensearch.js/issues"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter list",
+    "clean": "rm ./lib/tokensearch.min.js",
+    "build": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js",
+    "release": "npm test && npm version patch -m 'Upgrade version to %s' && npm run-script build && npm run-script publish"
+  }
 }
