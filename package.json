@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/neophob/tokensearch.git"
+    "url": "http://github.com/neophob/tokensearch.js.git"
   },
   "keywords": [
     "string search",
@@ -24,6 +24,9 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "bugs": {
+    "url": "https://github.com/neophob/tokensearch.js/issues"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter list",
