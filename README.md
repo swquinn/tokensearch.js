@@ -21,7 +21,7 @@ var readmeUser = [{
   "name": "BODE JON MULLER",
   "id": "147",
 }];
-var tokenSearch = new Tokensearch(readmeUser, { collectionKey: 'name' });
+var tokenSearch = new Tokensearch(readmeUser, { collectionKeys: ['name'] });
 
 ```
 
