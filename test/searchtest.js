@@ -5,37 +5,6 @@ var expect = chai.expect;
 var Tokensearch = require('../lib/tokensearch');
 var users = require('./users.json');
 
-describe('./lib/tokensearch.js - edge cases', function() {
-
-  it('invalid constructor, no collectionKey', function(done) {
-    try {
-      tokenSearch = new Tokensearch(users);
-      expect(true).to.equal(false);
-    } catch (ex) {
-      done();
-    }
-  });
-
-  it('invalid constructor, null collection', function(done) {
-    try {
-      tokenSearch = new Tokensearch(null);
-      expect(true).to.equal(false);
-    } catch (ex) {
-      done();
-    }
-  });
-
-  it('invalid constructor, empty collection', function(done) {
-    try {
-      tokenSearch = new Tokensearch([]);
-      expect(true).to.equal(false);
-    } catch (ex) {
-      done();
-    }
-  });
-
-});
-
 describe('./lib/tokensearch.js - search example', function() {
   //GIVEN
   var tokenSearch;
@@ -61,8 +30,6 @@ describe('./lib/tokensearch.js - search example', function() {
 
     //THEN
     expect(result.length).to.equal(10);
-    expect(result[0].score).to.equal(0.5);
-    expect(result[0].item).to.exist();
     expect(result[0].item.name).to.have.string('JOHN');
   });
 
@@ -80,8 +47,6 @@ describe('./lib/tokensearch.js - search example', function() {
 
     //THEN
     expect(result.length).to.equal(1);
-    expect(result[0].score).to.equal(0.5);
-    expect(result[0].item).to.exist();
     expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
   });
 
