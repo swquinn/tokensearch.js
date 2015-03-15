@@ -1,0 +1,33 @@
+{
+  "name": "tokensearch.js",
+  "version": "0.5.0",
+  "description": "Substring token search",
+  "author": {
+    "name": "Michael Vogt",
+    "email": "michael@neeo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/neophob/tokensearch.git"
+  },
+  "keywords": [
+    "string search",
+    "token",
+    "substring",
+    "collection"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.20.1",
+    "chai": "^1.10.0",
+    "uglify-js": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter list",
+    "pack": "npm pack",
+    "minify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o dist/tokensearch.min.js"
+  }
+}
