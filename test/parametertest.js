@@ -4,20 +4,13 @@ var chai = require('chai');
 var expect = chai.expect;
 var Tokensearch = require('../lib/tokensearch');
 var users = [{
-  "name": "MUTHKHOD SHRIDEVI SHARANGOWDA ",
-  "CML_rank": "64400",
-  "registrationNumber": "1001061",
-  "alloted": null
+  "name": "MUTHKHOD SHRIDEVI SHARANGOWDA "
 }, {
-  "name": "ADAPPA ASHRAY AMARNATH ",
-  "CML_rank": "42680",
-  "registrationNumber": "1001091",
-  "alloted": "M5207"
+  "name": "ADAPPB PILLE PALLE "
 }, {
-  "name": "IUSE-ANOTHER-DELIM",
-  "CML_rank": "42320",
-  "registrationNumber": "1001094",
-  "alloted": "M5202"
+  "name": "ADAPPA ASHRAY AMARNATH "
+}, {
+  "name": "IUSE-ANOTHER-DELIM"
 }];
 
 describe('parametertest -', function() {
@@ -26,7 +19,7 @@ describe('parametertest -', function() {
     //GIVEN
     var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'] });
     //WHEN
-    var result = tokenSearch.search('ADAPPA ASHRAY');
+    var result = tokenSearch.search('ADAPPA');
     //THEN
     expect(result.length).to.equal(1);
   });
@@ -35,9 +28,10 @@ describe('parametertest -', function() {
     //GIVEN
     var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], threshold: 0.1 });
     //WHEN
-    var result = tokenSearch.search('ADAPP ASHRA');
+    var result = tokenSearch.search('ADAPP ASHRAY');
+
     //THEN
-    expect(result.length).to.equal(0);
+    expect(result.length).to.equal(1);
   });
 
   it('delimiter parameter', function() {

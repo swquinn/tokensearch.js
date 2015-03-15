@@ -46,22 +46,22 @@ describe('searchtest.js -', function() {
     var result = tokenSearch.search('PATEL DHRUVIN UDAYAN');
 
     //THEN
-    expect(result.length).to.equal(9);
+    expect(result.length).to.equal(29);
     expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
   });
 
   it('search unique name, missing last character', function() {
     //WHEN
-    var result = tokenSearch.search('PATE DHRUVI UDAYA', 0.8);
+    var result = tokenSearch.search('PATE DHRUVI UDAYA');
 
     //THEN
-    expect(result.length).to.equal(2);
+    expect(result.length).to.equal(31);
     expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
   });
 
   it('search unique name, threshold too big', function() {
     //WHEN
-    var result = tokenSearch.search('PATE DHRUVI UDAYA', 0.1);
+    var result = tokenSearch.search('PATE DHRUVI UDAYA', -0.1);
 
     //THEN
     expect(result.length).to.equal(0);
