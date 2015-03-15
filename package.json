@@ -30,10 +30,8 @@
     },
     "scripts": {
         "test": "./node_modules/.bin/mocha --reporter list",
-        "pack": "npm pack",
-        "clean": "rm -rf ./dist/*",
-        "install": "mkdir -p dist && npm run-script _installminify && npm run-script _installorig",
-        "_installminify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o dist/tokensearch.min.js",
-        "_installorig": "cp lib/tokensearch.js dist/tokensearch.js"
+        "clean": "rm ./lib/tokensearch.min.js",
+        "install": "npm run-script _installminify",
+        "_installminify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js"
     }
 }
