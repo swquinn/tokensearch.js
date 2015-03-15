@@ -1,6 +1,6 @@
 {
     "name": "tokensearch.js",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Substring token search",
     "author": {
         "name": "Michael Vogt",
@@ -19,8 +19,8 @@
     "license": "MIT",
     "devDependencies": {
         "mocha": "~1.20.1",
-        "chai": "^1.10.0",
-        "uglify-js": "*"
+        "chai": "~1.10.0",
+        "uglify-js": "~2.4.17"
     },
     "engines": {
         "node": ">=0.10.0"
@@ -31,7 +31,6 @@
     "scripts": {
         "test": "./node_modules/.bin/mocha --reporter list",
         "clean": "rm ./lib/tokensearch.min.js",
-        "install": "npm run-script _installminify",
-        "_installminify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js"
+        "minify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js"
     }
 }
