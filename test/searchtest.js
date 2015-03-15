@@ -15,22 +15,22 @@ describe('./lib/tokensearch.js - search example', function() {
 
   it('regular search', function() {
     //WHEN
-    var result = tokenSearch.search('JOHN');
+    var result = tokenSearch.search('GUPTA');
 
     //THEN
-    expect(result.length).to.equal(10);
+    expect(result.length).to.equal(24);
     expect(result[0].score).to.equal(0.5);
     expect(result[0].item).to.exist();
-    expect(result[0].item.name).to.have.string('JOHN');
+    expect(result[0].item.name).to.have.string('GUPTA');
   });
 
   it('regular search, case insensitive', function() {
     //WHEN
-    var result = tokenSearch.search('john');
+    var result = tokenSearch.search('gupta');
 
     //THEN
-    expect(result.length).to.equal(10);
-    expect(result[0].item.name).to.have.string('JOHN');
+    expect(result.length).to.equal(24);
+    expect(result[0].item.name).to.have.string('GUPTA');
   });
 
   it('search non existing user', function() {
