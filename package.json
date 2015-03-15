@@ -1,7 +1,8 @@
 {
     "name": "tokensearch.js",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "Substring token search",
+    "main": "./lib/tokensearch.min.js",
     "author": {
         "name": "Michael Vogt",
         "email": "michael@neeo.com"
@@ -31,6 +32,6 @@
     "scripts": {
         "test": "./node_modules/.bin/mocha --reporter list",
         "clean": "rm ./lib/tokensearch.min.js",
-        "minify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js"
+        "install": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js"
     }
 }

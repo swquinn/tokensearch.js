@@ -1,0 +1,10 @@
+{
+  "name": "tokensearch.js-example",
+  "version": "0.0.1",
+  "dependencies": {
+    "tokensearch.js": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

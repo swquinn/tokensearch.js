@@ -1,9 +1,10 @@
 # tokensearch.js
 [![Build Status](https://secure.travis-ci.org/neophob/tokensearch.js.png?branch=master)](http://travis-ci.org/neophob/tokensearch.js)
 
-tokensearch.js is a simple substring search functions for collections.
+**tokensearch.js** is a simple substring search functions for collections. You can search with multiple search tokens in a key of a json file
+structure, the result array contains the original object plus a search score (0: perfect, 1: forget it).
 
-Inspired by https://github.com/krisk/Fuse
+Inspired by https://github.com/krisk/Fuse, users.json file is ripped from this project.
 
 ## Example Usage
 
