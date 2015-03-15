@@ -1,7 +1,8 @@
 var util = require('util');
 var data = require('./../test/users.json');
+console.log('Found '+data.length+' entires...');
 var Tokensearch = require('tokensearch.js');
-var tokensearch = new Tokensearch(data, { collectionKey: 'value' });
+var tokensearch = new Tokensearch(data, { collectionKey: 'name', threshold: 0.8 });
 
 var searchAndPrint = function(token) {
   var durationStart = new Date();
@@ -9,14 +10,15 @@ var searchAndPrint = function(token) {
   var needed = new Date()-durationStart;
   console.log('\nResults for search <'+token+'>: ('+result.length+' entries found)');
   for (i = 0; i < Math.min(10, result.length); i++) {
-    console.log(result[i].score+' - '+result[i].item.value);
+    console.log(result[i].score+' - '+result[i].item.name);
   }
   console.log('Duration: '+needed+'ms\tMem used: '+util.inspect(process.memoryUsage()));
 };
 
 searchAndPrint('gupta');
 searchAndPrint('    BHAT JO AN  ');
-searchAndPrint('DES AES');
+searchAndPrint('DES');
+searchAndPrint('BAR SAN');
 
 
 
