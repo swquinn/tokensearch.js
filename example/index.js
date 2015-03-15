@@ -2,7 +2,7 @@ var util = require('util');
 var data = require('./../test/users.json');
 console.log('Found '+data.length+' entires...');
 var Tokensearch = require('tokensearch.js');
-var tokensearch = new Tokensearch(data, { collectionKey: 'name', threshold: 0.8 });
+var tokensearch = new Tokensearch(data, { collectionKeys: ['name'], threshold: 0.8 });
 
 var searchAndPrint = function(token) {
   var durationStart = new Date();
