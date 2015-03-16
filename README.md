@@ -33,7 +33,7 @@ new Tokensearch(myCollection, { collectionKeys: ['key1', 'key2'], threshold: 0.5
 ## Examples
 
 ### Simple
-
+Search for text tokens in one JSON field, use space as delimiter.
 **Setup:**
 
 ```
@@ -65,7 +65,7 @@ var result = tokenSearch.search('JOHN BAR');
 ```
 
 ### Advanced
-
+Search for text tokens in two JSON fields, use space and : as delimiter.
 **Setup:**
 
 ```
