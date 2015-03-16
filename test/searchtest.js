@@ -70,7 +70,7 @@ describe('searchtest.js -', function() {
 });
 
 
-describe('README.md', function() {
+describe.only('README.md', function() {
 
   it('simple example should work', function() {
     //GIVEN
