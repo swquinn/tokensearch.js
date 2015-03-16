@@ -63,5 +63,40 @@ var result = tokenSearch.search('JOHN BAR');
   {"item":{"name":"JOHN PETER DOW","id":"123"},"score":0.6666666666666667}
 ]
 ```
+
+### Advanced
+
+**Setup:**
+
+```
+var readmeUser = [{
+  "name": "JOHN PETER DOW",
+  "address": "a:funny-street:44",
+  "id": "123"
+}, {
+  "name": "FOO BAR JOHN",
+  "address": "bullvd:street:33",
+  "id": "127",
+}, {
+  "name": "BODE JON MULLER",
+  "address": "upside:down",
+  "id": "147",
+}];
+var tokenSearch = new Tokensearch(readmeUser, { collectionKeys: ['name', 'address'], delimiterRegex: /[\s:]+/, });
+
+```
+
+**Search:**
+```
+var result = tokenSearch.search('street:JOhn');
+```
+
+**Result:**
+```
+[
+  todo
+]
+```
+
 Score 0 means a perfect match, score 1 is likely not what you're looking for.
 The original object is wrapped inside the `item` key.
