@@ -33,6 +33,7 @@ new Tokensearch(myCollection, { collectionKeys: ['key1', 'key2'], threshold: 0.5
 ## Examples
 
 ### Simple
+Search for text tokens in one JSON field, use space as delimiter.
 
 **Setup:**
 
@@ -59,12 +60,13 @@ var result = tokenSearch.search('JOHN BAR');
 **Result:**
 ```
 [
-  {"item":{"name":"FOO BAR JOHN","id":"127","dataEntryTokens":["foo","bar","john"]},"score":0},
-  {"item":{"name":"JOHN PETER DOW","id":"123","dataEntryTokens":["john","peter","dow"]},"score":0.5}
+  {"item":{"name":"FOO BAR JOHN","id":"127}","score":0},
+  {"item":{"name":"JOHN PETER DOW","id":"123"},"score":0.5}
 ]
 ```
 
 ### Advanced
+Search for text tokens in two JSON fields, use space and : as delimiter.
 
 **Setup:**
 
@@ -94,7 +96,7 @@ var result = tokenSearch.search('JOHN:street');
 **Result:**
 ```
 [
-  {"item":{"name":"JOHN PETER DOW","address":"a:funny:street:44","id":"123","dataEntryTokens":["john","peter","dow","a","funny","street","44"]},"score":0},
-  {"item":{"name":"BODE JOHN MULLER","address":"upside:street","id":"147","dataEntryTokens":["bode","john","muller","upside","street"]},"score":0}
+  {"item":{"name":"JOHN PETER DOW","address":"a:funny:street:44","id":"123"},"score":0},
+  {"item":{"name":"BODE JOHN MULLER","address":"upside:street","id":"147"},"score":0}
 ]
 ```
