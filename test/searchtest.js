@@ -71,9 +71,10 @@ describe('searchtest.js -', function() {
 
 
 describe('README.md', function() {
-  it('example should work', function() {
+
+  it('simple example should work', function() {
     //GIVEN
-    var readmeUser = [{
+    var collection = [{
       "name": "JOHN PETER DOW",
       "id": "123"
     }, {
@@ -83,7 +84,7 @@ describe('README.md', function() {
       "name": "BODE JON MULLER",
       "id": "147",
     }];
-    var tokenSearch = new Tokensearch(readmeUser, { collectionKeys: ['name'] });
+    var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name'] });
 
     //WHEN
     var result = tokenSearch.search('JOHN BAR');
@@ -92,4 +93,31 @@ describe('README.md', function() {
     //console.log(JSON.stringify(result));
     expect(result.length).to.equal(2);
   });
+
+  it('advanced example should work', function() {
+    //GIVEN
+    var collection = [{
+      "name": "JOHN PETER DOW",
+      "address": "a:funny-street:44",
+      "id": "123"
+    }, {
+      "name": "FOO BAR JOHN",
+      "address": "bullvd:street:33",
+      "id": "127",
+    }, {
+      "name": "BODE JON MULLER",
+      "address": "upside:down",
+      "id": "147",
+    }];
+    var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name', 'address'], delimiterRegex: /[\s:]+/, threshold: 0.6});
+
+    //WHEN
+    var result = tokenSearch.search('JO BAR');
+
+    //THEN
+    console.log(JSON.stringify(result));
+    expect(result.length).to.equal(2);
+
+  });
+
 });

@@ -24,7 +24,7 @@ Tokensearch.defaultOptions = {
 };
 ```
 
-You can pass one or multiple parameter when creating the object, for example 
+You can pass one or multiple parameter when creating the object, for example
 
 ```
 new Tokensearch(myCollection, { collectionKeys: ['key1', 'key2'], threshold: 0.5 });
@@ -37,7 +37,7 @@ new Tokensearch(myCollection, { collectionKeys: ['key1', 'key2'], threshold: 0.5
 **Setup:**
 
 ```
-var readmeUser = [{
+var collection = [{
   "name": "JOHN PETER DOW",
   "id": "123"
 }, {
@@ -47,7 +47,7 @@ var readmeUser = [{
   "name": "BODE JON MULLER",
   "id": "147",
 }];
-var tokenSearch = new Tokensearch(readmeUser, { collectionKeys: ['name'] });
+var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name'] });
 
 ```
 
@@ -59,8 +59,8 @@ var result = tokenSearch.search('JOHN BAR');
 **Result:**
 ```
 [
-  {"item":{"name":"FOO BAR JOHN","id":"127"},"score":0.33333333333333337},
-  {"item":{"name":"JOHN PETER DOW","id":"123"},"score":0.6666666666666667}
+  {"item":{"name":"FOO BAR JOHN","id":"127","dataEntryTokens":["foo","bar","john"]},"score":0},
+  {"item":{"name":"JOHN PETER DOW","id":"123","dataEntryTokens":["john","peter","dow"]},"score":0.5}
 ]
 ```
 
@@ -88,13 +88,14 @@ var tokenSearch = new Tokensearch(readmeUser, { collectionKeys: ['name', 'addres
 
 **Search:**
 ```
-var result = tokenSearch.search('street:JOhn');
+var result = tokenSearch.search('street:jo');
 ```
 
 **Result:**
 ```
 [
-  todo
+  {"item":{"name":"FOO BAR JOHN","address":"bullvd:street:33","id":"127","dataEntryTokens":["foo","bar","john","bullvd:street:33"]},"score":0},
+  {"item":{"name":"JOHN PETER DOW","address":"a:funny-street:44","id":"123","dataEntryTokens":["john","peter","dow","a:funny","street:44"]},"score":0.5}
 ]
 ```
 

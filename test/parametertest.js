@@ -10,7 +10,7 @@ var users = [{
 }, {
   "name": "ADAPPA ASHRAY AMARNATH "
 }, {
-  "name": "IUSE-ANOTHER-DELIM"
+  "name": "IUSE:ANOTHER:DELIM"
 }];
 
 describe('parametertest -', function() {
@@ -34,11 +34,20 @@ describe('parametertest -', function() {
     expect(result.length).to.equal(1);
   });
 
-  it('delimiter parameter', function() {
+  it('delimiter parameter, character', function() {
     //GIVEN
     var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], delimiter: '-' });
     //WHEN
     var result = tokenSearch.search('IUS-ANOTHE-DELI');
+    //THEN
+    expect(result.length).to.equal(1);
+  });
+
+  it('delimiter parameter, regex', function() {
+    //GIVEN
+    var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], delimiter: /[:]+/ });
+    //WHEN
+    var result = tokenSearch.search('IUS:ANOTHE:DELI');
     //THEN
     expect(result.length).to.equal(1);
   });
