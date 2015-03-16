@@ -22,6 +22,8 @@ describe('parametertest -', function() {
     var result = tokenSearch.search('ADAPPA');
     //THEN
     expect(result.length).to.equal(1);
+    expect(result[0].item.name).to.equal('ADAPPA ASHRAY AMARNATH ');
+    expect(result[0].score).to.equal(0);
   });
 
   it('threshold parameter', function() {
@@ -32,15 +34,19 @@ describe('parametertest -', function() {
 
     //THEN
     expect(result.length).to.equal(1);
+    expect(result[0].item.name).to.equal('ADAPPA ASHRAY AMARNATH ');
+    expect(result[0].score).to.equal(0);
   });
 
   it('delimiter parameter, character', function() {
     //GIVEN
-    var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], delimiter: '-' });
+    var tokenSearch = new Tokensearch(users, { collectionKeys: ['name'], delimiter: ':' });
     //WHEN
-    var result = tokenSearch.search('IUS-ANOTHE-DELI');
+    var result = tokenSearch.search('IUS:DELI');
     //THEN
     expect(result.length).to.equal(1);
+    expect(result[0].item.name).to.equal('IUSE:ANOTHER:DELIM');
+    expect(result[0].score).to.equal(0);
   });
 
   it('delimiter parameter, regex', function() {
@@ -50,6 +56,8 @@ describe('parametertest -', function() {
     var result = tokenSearch.search('IUS:ANOTHE:DELI');
     //THEN
     expect(result.length).to.equal(1);
+    expect(result[0].item.name).to.equal('IUSE:ANOTHER:DELIM');
+    expect(result[0].score).to.equal(0);
   });
 
   it('maxFilterTokenEntries parameter', function() {
