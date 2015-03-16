@@ -1,5 +1,5 @@
 var util = require('util');
-var data = require('./../test/users.json');
+var data = require('./../../test/users.json');
 console.log('Found '+data.length+' entires...');
 var Tokensearch = require('tokensearch.js');
 var tokensearch = new Tokensearch(data, { collectionKeys: ['name'], threshold: 0.8 });
