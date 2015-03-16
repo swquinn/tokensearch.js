@@ -1,5 +1,5 @@
 # tokensearch.js
-[![Build Status](https://secure.travis-ci.org/neophob/tokensearch.js.png?branch=master)](http://travis-ci.org/neophob/tokensearch.js)
+[![Dependency Status](https://gemnasium.com/neophob/tokensearch.js.svg)](https://gemnasium.com/neophob/tokensearch.js) [![Build Status](https://secure.travis-ci.org/neophob/tokensearch.js.png?branch=master)](http://travis-ci.org/neophob/tokensearch.js)
 
 **tokensearch.js** is a simple substring search functions for collections. You can search for multiple search tokens in a json file, the result array contains the original object plus a search `score` (0: perfect, 1: forget it). See the example or unit tests for more details.
 
