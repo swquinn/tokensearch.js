@@ -70,7 +70,7 @@ describe('searchtest.js -', function() {
 });
 
 
-describe.only('README.md', function() {
+describe('README.md', function() {
 
   it('simple example should work', function() {
     //GIVEN
@@ -98,26 +98,26 @@ describe.only('README.md', function() {
     //GIVEN
     var collection = [{
       "name": "JOHN PETER DOW",
-      "address": "a:funny-street:44",
+      "address": "a:funny:street:44",
       "id": "123"
     }, {
-      "name": "FOO BAR JOHN",
-      "address": "bullvd:street:33",
+      "name": "FOO BAR JON",
+      "address": "bullvd:33",
       "id": "127",
     }, {
-      "name": "BODE JON MULLER",
-      "address": "upside:down",
+      "name": "BODE JOHN MULLER",
+      "address": "upside:street",
       "id": "147",
     }];
-    var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name', 'address'], delimiterRegex: /[\s:]+/, threshold: 0.6});
+    var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name', 'address'], delimiter: /[\s:]+/, threshold: 0.5});
 
     //WHEN
-    var result = tokenSearch.search('JO BAR');
+    var result = tokenSearch.search('JOHN:street');
 
     //THEN
-    console.log(JSON.stringify(result));
     expect(result.length).to.equal(2);
-
+    expect(result[0].item.name).to.equal('JOHN PETER DOW');
+    expect(result[1].item.name).to.equal('BODE JOHN MULLER');
   });
 
 });

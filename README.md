@@ -1,7 +1,7 @@
 # tokensearch.js
 [![Build Status](https://secure.travis-ci.org/neophob/tokensearch.js.png?branch=master)](http://travis-ci.org/neophob/tokensearch.js)
 
-**tokensearch.js** is a simple substring search functions for collections. You can search for multiple search tokens in a json file, the result array contains the original object plus a search score (0: perfect, 1: forget it). See the example or unit tests for more details.
+**tokensearch.js** is a simple substring search functions for collections. You can search for multiple search tokens in a json file, the result array contains the original object plus a search `score` (0: perfect, 1: forget it). See the example or unit tests for more details.
 
 Inspired by https://github.com/krisk/Fuse, users.json file is ripped from this project.
 
@@ -69,35 +69,32 @@ var result = tokenSearch.search('JOHN BAR');
 **Setup:**
 
 ```
-var readmeUser = [{
+var collection = [{
   "name": "JOHN PETER DOW",
-  "address": "a:funny-street:44",
+  "address": "a:funny:street:44",
   "id": "123"
 }, {
-  "name": "FOO BAR JOHN",
-  "address": "bullvd:street:33",
+  "name": "FOO BAR JON",
+  "address": "bullvd:33",
   "id": "127",
 }, {
-  "name": "BODE JON MULLER",
-  "address": "upside:down",
+  "name": "BODE JOHN MULLER",
+  "address": "upside:street",
   "id": "147",
 }];
-var tokenSearch = new Tokensearch(readmeUser, { collectionKeys: ['name', 'address'], delimiterRegex: /[\s:]+/, });
+var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name', 'address'], delimiter: /[\s:]+/, threshold: 0.5});
 
 ```
 
 **Search:**
 ```
-var result = tokenSearch.search('street:jo');
+var result = tokenSearch.search('JOHN:street');
 ```
 
 **Result:**
 ```
 [
-  {"item":{"name":"FOO BAR JOHN","address":"bullvd:street:33","id":"127","dataEntryTokens":["foo","bar","john","bullvd:street:33"]},"score":0},
-  {"item":{"name":"JOHN PETER DOW","address":"a:funny-street:44","id":"123","dataEntryTokens":["john","peter","dow","a:funny","street:44"]},"score":0.5}
+  {"item":{"name":"JOHN PETER DOW","address":"a:funny:street:44","id":"123","dataEntryTokens":["john","peter","dow","a","funny","street","44"]},"score":0},
+  {"item":{"name":"BODE JOHN MULLER","address":"upside:street","id":"147","dataEntryTokens":["bode","john","muller","upside","street"]},"score":0}
 ]
 ```
-
-Score 0 means a perfect match, score 1 is likely not what you're looking for.
-The original object is wrapped inside the `item` key.
