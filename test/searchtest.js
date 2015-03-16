@@ -20,7 +20,7 @@ describe('searchtest.js -', function() {
     //THEN
     expect(result.length).to.equal(25);
     expect(result[0].score).to.equal(0);
-    expect(result[0].item).to.exist();
+    expect(result[0].item).to.exist;
     expect(result[0].item.name).to.have.string('GUPTA');
   });
 

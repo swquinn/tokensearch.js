@@ -20,7 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "~2.2.1",
-    "chai": "~1.10.0",
+    "chai": "~2.1.2",
     "uglify-js": "~2.4.17"
   },
   "engines": {
