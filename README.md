@@ -139,3 +139,51 @@ var result = tokenSearch.search('JOHN:street');
   {"item":{"name":"BODE JOHN MULLER","address":"upside:street","id":"147"},"score":0}
 ]
 ```
+
+### Advanced 2
+Search for text tokens in two JSON fields, use space and : as delimiter, use a custom search algorithm.
+
+**Setup:**
+
+```
+    var collection = [{
+      "name": "JOHN DOE",
+      "address": "a:funny:street:44",
+      "id": "123"
+    }, {
+      "name": "FOO BAR JON",
+      "address": "bullvd:33",
+      "id": "127",
+    }, {
+      "name": "BODE MULLER",
+      "address": "john:upside:street",
+      "id": "147",
+    }];
+
+    var tokenSearch = function(haystack, needles) {
+      var score = 0;
+      var arrayLength = needles.length;
+      for (var i = 0; i < arrayLength; i++) {
+        var needle = needles[i];
+        if (haystack === needle) {
+          score ++;
+        }
+      }
+      return score;
+    };
+    var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name', 'address'], delimiter: /[\s:]+/, threshold: 0.5, searchAlgorithm: tokenSearch});
+
+```
+
+**Search:**
+```
+var result = tokenSearch.search('JOHN');
+```
+
+**Result:**
+```
+[
+  {"item":{"name":"JOHN DOE","address":"a:funny:street:44","id":"123"},"score":0},
+  {"item":{"name":"BODE MULLER","address":"john:upside:street","id":"147"},"score":0}
+]
+```
