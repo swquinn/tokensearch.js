@@ -20,8 +20,47 @@ Tokensearch.defaultOptions = {
   maxFilterTokenEntries: 5,
 
   // search key
-  collectionKeys: []
-};
+  collectionKeys: [],
+
+  // search all 'needles' in the 'haystack', return a score for each function call
+  searchAlgorithm: function(haystack, needles) {
+    var score = 0;
+    var arrayLength = needles.length;
+    for (var i = 0; i < arrayLength; i++) {
+      var needle = needles[i];
+      var stringPos = haystack.indexOf(needle);
+      if (stringPos > -1) {
+        if (haystack === needle) {
+          score += 6;
+        } else if (stringPos === 0) {
+          score += 2;
+        } else {
+          score += 1;
+        }
+      }
+    }
+    return score;
+  },
+
+  //postprocess all elements (=contains all elements with a score)
+  postprocessAlgorithm: function(collection, maxScore, threshold) {
+    var normalizedScore = 1 / maxScore;
+    var result = [];
+    collection.forEach(function(e) {
+      e.score = 1-e.score*normalizedScore;
+      if (e.score <= threshold) {
+        result.push(e);
+      }
+    });
+    return result;
+  },
+
+  // sort the result array (=output of the postprocess step)
+  sortAlgorithm: function(array) {
+    return array.sort(function(a, b) {
+    return a.score - b.score;
+    });
+  }};
 ```
 
 You can pass one or multiple parameter when creating the object, for example
@@ -65,7 +104,7 @@ var result = tokenSearch.search('JOHN BAR');
 ]
 ```
 
-### Advanced
+### Advanced 1
 Search for text tokens in two JSON fields, use space and : as delimiter.
 
 **Setup:**
