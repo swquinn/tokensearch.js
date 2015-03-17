@@ -18,7 +18,7 @@ describe('searchtest.js -', function() {
     var result = tokenSearch.search('GUPTA');
 
     //THEN
-    expect(result.length).to.equal(25);
+    expect(result.length).to.equal(24);
     expect(result[0].score).to.equal(0);
     expect(result[0].item).to.exist;
     expect(result[0].item.name).to.have.string('GUPTA');
@@ -29,7 +29,7 @@ describe('searchtest.js -', function() {
     var result = tokenSearch.search('gupta');
 
     //THEN
-    expect(result.length).to.equal(25);
+    expect(result.length).to.equal(24);
     expect(result[0].item.name).to.have.string('GUPTA');
   });
 
