@@ -33,7 +33,9 @@
     "test": "./node_modules/.bin/mocha --reporter list",
     "clean": "rm ./lib/tokensearch.min.js",
     "build": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js",
-    "release": "npm test && npm run-script build && npm version patch -m 'Upgrade version to %s' && npm publish && git push --tags",
+    "gitcommit": "git commit -am 'update minified code' | cat",
+    "buildcommit": "npm run-script build && npm run-script commit",
+    "release": "npm test && npm run-script buildcommit && npm version patch -m 'Upgrade version to %s' && npm publish && git push --tags",
     "bowerrelease": "bower version patch -m 'Upgrade version to %s'"
   }
 }
