@@ -36,7 +36,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter list && npm run check-coverage",
-    "jshint": "jshint -c .jshintrc index.js test/*.js",
+    "jshint": "jshint -c .jshintrc ./lib/tokensearch.js test/*.js",
     "check-coverage": "istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "clean": "rm ./lib/tokensearch.min.js",
     "minify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js",
