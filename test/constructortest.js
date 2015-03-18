@@ -10,7 +10,7 @@ var users = [{
   "alloted": "M5202"
 }];
 
-describe('./lib/tokensearch.js - edge cases', function() {
+describe('constructortest.js', function() {
 
   it('invalid constructor, no collectionKey', function() {
     //GIVEN

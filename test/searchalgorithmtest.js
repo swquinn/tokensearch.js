@@ -13,7 +13,7 @@ var collection = [{
   "name": "GRANDPA"
 }];
 
-describe('search algorithm -', function() {
+describe('searchalgorithmtest.js', function() {
 
   it('custom search HOMER', function() {
     //GIVEN

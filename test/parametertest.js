@@ -13,7 +13,7 @@ var users = [{
   "name": "IUSE:ANOTHER:DELIM"
 }];
 
-describe('parametertest -', function() {
+describe('parametertest.js', function() {
 
   it('default parameter', function() {
     //GIVEN

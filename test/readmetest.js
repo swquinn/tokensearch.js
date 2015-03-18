@@ -4,7 +4,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var Tokensearch = require('../lib/tokensearch');
 
-describe('README.md', function() {
+describe('readmetest.js', function() {
 
   it('simple example should work', function() {
     //GIVEN

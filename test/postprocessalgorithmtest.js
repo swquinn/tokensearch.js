@@ -13,7 +13,7 @@ var collection = [{
   "name": "GRANDPA"
 }];
 
-describe('postprocess algorithm -', function() {
+describe('postprocessalgorithmtest.js', function() {
 
   it('custom search HOMER', function() {
     //GIVEN
