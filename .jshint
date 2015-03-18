@@ -1,4 +1,7 @@
 {
+ "predef": [
+    "define"
+  ],
   "node": true,
   "browser": true,
   "esnext": true,
