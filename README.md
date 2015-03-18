@@ -189,18 +189,8 @@ var result = tokenSearch.search('JOHN');
 ```
 
 ## Build
-to run tests and lint
-``` js
-npm test
-```
-
-to minify code
-``` js
-npm run-script minify
-```
-
-to create a new release
-``` js
-npm run-script release
-```
+- to run **tests** and lint: `npm test`
+- to **minify** code: `npm run-script minify`
+- to create a new **release**: `npm run-script release`
+- to check code **coverage**: `npm run-script coverage`
 
