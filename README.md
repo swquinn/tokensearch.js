@@ -187,3 +187,20 @@ var result = tokenSearch.search('JOHN');
   {"item":{"name":"BODE MULLER","address":"john:upside:street","id":"147"},"score":0}
 ]
 ```
+
+## Build
+to run tests and lint
+``` js
+npm test
+```
+
+to minify code
+``` js
+npm run-script minify
+```
+
+to create a new release
+``` js
+npm run-script release
+```
+
