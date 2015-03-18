@@ -35,7 +35,7 @@
     "url": "https://github.com/neophob/tokensearch.js/issues"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter list",
+    "test": "./node_modules/.bin/mocha --reporter list && npm run check-coverage",
     "jshint": "jshint -c .jshintrc index.js test/*.js",
     "check-coverage": "istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "clean": "rm ./lib/tokensearch.min.js",
