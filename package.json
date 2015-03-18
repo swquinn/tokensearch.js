@@ -23,7 +23,10 @@
   "devDependencies": {
     "mocha": "~2.2.1",
     "chai": "~2.1.2",
-    "uglify-js": "~2.4.17"
+    "uglify-js": "~2.4.17",
+    "jshint": "^2.5.6",
+    "pre-commit": "1.0.2",
+    "istanbul": "^0.3.5",
   },
   "engines": {
     "node": ">=0.10.0"
@@ -32,11 +35,18 @@
     "url": "https://github.com/neophob/tokensearch.js/issues"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter list && npm run-script minify",
+    "test": "./node_modules/.bin/mocha --reporter list",
+    "jshint": "jshint -c .jshintrc index.js test/*.js",
+    "check-coverage": "istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "clean": "rm ./lib/tokensearch.min.js",
     "minify": "node_modules/uglify-js/bin/uglifyjs lib/tokensearch.js --screw-ie8 --stats --lint --compress --mangle -o lib/tokensearch.min.js",
     "gitcommit": "git commit -am 'update minified code' | cat && git push | cat",
     "release": "npm test && npm run-script gitcommit && npm version patch -m 'Upgrade version to %s' && npm publish && git push --tags",
     "bowerrelease": "bower version patch -m 'Upgrade version to %s'"
-  }
+  },
+  "pre-commit": [
+    "jshint",
+    "test",
+    "check-coverage"
+  ]  
 }
