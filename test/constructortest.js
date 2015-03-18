@@ -3,7 +3,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 var Tokensearch = require('../lib/tokensearch');
-var users = [{
+var collection = [{
   "name": "IUSE-ANOTHER-DELIM",
   "CML_rank": "42320",
   "registrationNumber": "1001094",
@@ -30,7 +30,7 @@ describe('constructortest.js', function() {
     var failed = false;
     try {
       //WHEN
-      tokenSearch = new Tokensearch(users, { collectionKeys: null });
+      tokenSearch = new Tokensearch(collection, { collectionKeys: null });
     } catch (ex) {
       failed = true;
     }
@@ -57,6 +57,19 @@ describe('constructortest.js', function() {
     try {
       //WHEN
       tokenSearch = new Tokensearch([], { collectionKeys: ['name'] });
+    } catch (ex) {
+      failed = true;
+    }
+    //THEN
+    expect(failed).to.be.true;
+  });
+
+  it('invalid constructor, null options', function() {
+    //GIVEN
+    var failed = false;
+    try {
+      //WHEN
+      tokenSearch = new Tokensearch(collection, null);
     } catch (ex) {
       failed = true;
     }
