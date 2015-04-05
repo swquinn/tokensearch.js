@@ -61,7 +61,7 @@ describe('searchtest.js -', function() {
 
   it('search unique name, threshold too big', function() {
     //WHEN
-    var result = tokenSearch.search('PATE DHRUVI UDAYA', -0.1);
+    var result = tokenSearch.search('PATE DHRUVI UDAYA', { customThreshold: -0.1 } );
 
     //THEN
     expect(result.length).to.equal(0);
