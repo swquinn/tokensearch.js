@@ -67,4 +67,25 @@ describe('searchtest.js -', function() {
     expect(result.length).to.equal(0);
   });
 
+  it('search entry with a pre search check', function() {
+    //WHEN
+    var precheck = function(entry) {
+      var cmlNumber = parseInt(entry.CML_rank);
+      if (cmlNumber < 100) {
+        return true;
+      }
+      return false;
+    };
+    var result = tokenSearch.search('PATE DHRUVI UDAYA', { preprocessCheck : precheck } );
+
+    //THEN
+    expect(result.length).to.equal(6);
+    expect(result[0].item.CML_rank.length).to.be.below(3);
+    expect(result[1].item.CML_rank.length).to.be.below(3);
+    expect(result[2].item.CML_rank.length).to.be.below(3);
+    expect(result[3].item.CML_rank.length).to.be.below(3);
+    expect(result[4].item.CML_rank.length).to.be.below(3);
+    expect(result[5].item.CML_rank.length).to.be.below(3);
+  });
+
 });
