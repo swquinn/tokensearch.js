@@ -16,7 +16,6 @@ describe('searchtest.js -', function() {
   it('regular search', function() {
     //WHEN
     var result = tokenSearch.search('GUPTA');
-
     //THEN
     expect(result.length).to.equal(24);
     expect(result[0].score).to.equal(0);
@@ -56,7 +55,7 @@ describe('searchtest.js -', function() {
 
     //THEN
     expect(result.length).to.equal(31);
-    expect(result[0].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
+    expect(result[1].item.name).to.have.string('PATEL DHRUVIN UDAYAN');
   });
 
   it('search unique name, threshold too big', function() {

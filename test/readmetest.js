@@ -50,8 +50,8 @@ describe('readmetest.js', function() {
 
     //THEN
     expect(result.length).to.equal(2);
-    expect(result[0].item.name).to.equal('JOHN PETER DOW');
-    expect(result[1].item.name).to.equal('BODE JOHN MULLER');
+    expect(result[0].item.name).to.equal('BODE JOHN MULLER');
+    expect(result[1].item.name).to.equal('JOHN PETER DOW');
   });
 
   it('advanced 2 example should work', function() {
@@ -88,9 +88,9 @@ describe('readmetest.js', function() {
 
     //THEN
     expect(result.length).to.equal(2);
-    expect(result[0].item.name).to.equal('JOHN DOE');
+    expect(result[0].item.name).to.equal('BODE MULLER');
     expect(result[0].score).to.equal(0);
-    expect(result[1].item.name).to.equal('BODE MULLER');
+    expect(result[1].item.name).to.equal('JOHN DOE');
     expect(result[1].score).to.equal(0);
   });
 

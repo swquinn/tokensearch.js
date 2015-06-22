@@ -51,4 +51,15 @@ describe('searchalgorithmtest.js', function() {
     expect(result[0].score).to.equal(0);
   });
 
+  it('search results are sorted', function() {
+    //GIVEN
+    var tokenSearch = new Tokensearch(collection, { collectionKeys: ['name'] });
+    //WHEN
+    var result = tokenSearch.search('a');
+    //THEN
+    expect(result[0].item.name).to.equal('BART');
+    expect(result[1].item.name).to.equal('GRANDPA');
+    expect(result[2].item.name).to.equal('LISA');
+  });
+
 });

@@ -1,6 +1,6 @@
 {
   "name": "tokensearch.js",
-  "version": "0.5.18",
+  "version": "0.5.19",
   "description": "Substring token search",
   "main": "./lib/tokensearch.min.js",
   "author": {
@@ -22,9 +22,9 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "~2.2.1",
-    "chai": "~2.2.0",
+    "chai": "~3.0.0",
     "uglify-js": "~2.4.17",
-    "jshint": "~2.6.3",
+    "jshint": "~2.8.0",
     "pre-commit": "~1.0.6",
     "istanbul": "~0.3.8"
   },
