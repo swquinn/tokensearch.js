@@ -87,4 +87,24 @@ describe('searchtest.js -', function() {
     expect(result[5].item.CML_rank.length).to.be.below(3);
   });
 
+  it('use custom search function', function() {
+    //WHEN
+    var result = tokenSearch.findFirstExactMatch(function(entry) {
+      if (entry.CML_rank === '1240' && entry.alloted === 'B4125') {
+        return true;
+      }
+    });
+
+    //THEN
+    expect(result.name).to.equal('BHAT GOUTAM MANJANATH ');
+  });
+
+  it('use custom search function, missing parameter', function() {
+    //WHEN
+    var result = tokenSearch.findFirstExactMatch();
+
+    //THEN
+    expect(result).to.equal(undefined);
+  });
+
 });
