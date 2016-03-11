@@ -1,10 +1,17 @@
 {
  "predef": [
-    "define"
+    "define",
+    "before",
+    "after",
+    "it",
+    "xit",
+    "describe",
+    "xdescribe",
+    "beforeEach",
+    "afterEach"
   ],
   "node": true,
   "browser": true,
-  "esnext": true,
   "bitwise": true,
   "camelcase": true,
   "curly": true,
@@ -20,5 +27,6 @@
   "unused": true,
   "strict": true,
   "trailing": true,
-  "smarttabs": true
+  "smarttabs": true,
+  "esversion": 6
 }
