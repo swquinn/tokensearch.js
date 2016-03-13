@@ -2,7 +2,7 @@
   "name": "tokensearch.js",
   "version": "0.5.25",
   "description": "Substring token search",
-  "main": "./lib/tokensearch.min.js",
+  "main": "./lib/tokensearch.js",
   "author": {
     "name": "Michael Vogt",
     "email": "michael@neeo.com"
@@ -40,8 +40,8 @@
     "coverage": "istanbul check-coverage --statements 80 --functions 80 --lines 80 --branches 80",
     "clean": "rm ./lib/tokensearch.min.js",
     "minify": "uglifyjs lib/tokensearch.js --screw-ie8 --stats --compress --mangle -o lib/tokensearch.min.js",
-    "gitcommit": "npm run-script minify && git commit -am 'update minified code' | cat && git push | cat",
-    "release": "npm test && npm run-script gitcommit && npm version patch -m 'Upgrade version to %s' && npm publish && git push --tags",
+    "gitcommit": "npm run minify && git commit -am 'update minified code' | cat && git push | cat",
+    "release": "npm test && npm version patch -m 'Upgrade version to %s' && npm publish && git push --tags",
     "bowerrelease": "bower version patch -m 'Upgrade version to %s'"
   },
   "pre-commit": [
