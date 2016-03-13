@@ -1,13 +1,42 @@
 'use strict';
 
-var chai = require('chai');
-var expect = chai.expect;
-var Tokensearch = require('../lib/tokensearch');
-var users = require('./users.json');
+const chai = require('chai');
+const expect = chai.expect;
+const Tokensearch = require('../lib/tokensearch');
+const users = require('./users.json');
+const dups = require('./dups.json');
 
-describe('searchtest.js -', function() {
+describe('searchtest.js - dup use case', function() {
+
+  it('no dup search', function() {
+    //GIVEN
+    const tokenSearch = new Tokensearch(dups, { unique: true, collectionKeys: ['name'] });
+    //WHEN
+    const result = tokenSearch.search('ADAPPA ASHRAY AMARNATH');
+    //THEN
+    expect(result.length).to.equal(1);
+    expect(result[0].score).to.equal(0);
+    expect(result[0].item).to.exist;
+    expect(result[0].item.name).to.have.string('ADAPPA');
+  });
+
+  it('no dup search, multiple collection keys', function() {
+    //GIVEN
+    const tokenSearch = new Tokensearch(dups, { unique: true, collectionKeys: ['name', 'CML_rank'] });
+    //WHEN
+    const result = tokenSearch.search('ADAPPA ASHRAY AMARNATH');
+    //THEN
+    expect(result.length).to.equal(3);
+    expect(result[0].score).to.equal(0);
+    expect(result[0].item).to.exist;
+    expect(result[0].item.name).to.have.string('ADAPPA');
+  });
+
+});
+
+describe('searchtest.js - default usage', function() {
   //GIVEN
-  var tokenSearch;
+  let tokenSearch;
 
   beforeEach(function() {
     tokenSearch = new Tokensearch(users, { collectionKeys: ['name'] });

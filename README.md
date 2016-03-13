@@ -25,6 +25,9 @@ Tokensearch.defaultOptions = {
   // search key
   collectionKeys: [],
 
+  //the result just contains unique results (based on collection keys)
+  unique: false,
+
   // search all 'needles' in the 'haystack', return a score for each function call
   searchAlgorithm: function(haystack, needles) {
     var score = 0;
@@ -197,4 +200,3 @@ var result = tokenSearch.search('JOHN');
 - to **minify** code: `npm run-script minify`
 - to create a new **release**: `npm run-script release`
 - to check code **coverage**: `npm run-script coverage`
-
