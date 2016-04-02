@@ -95,6 +95,32 @@ describe('searchtest.js - default usage', function() {
     expect(result.length).to.equal(0);
   });
 
+  it('search specific entry string', function() { //HORST5533
+    //WHEN
+    var result = tokenSearch.search('HORST', { delimiter: /[\s-]+/ } );
+
+    //THEN
+    expect(result.length).to.equal(1);
+    expect(result[0].item.name).to.have.string('HORST-5533');
+  });
+
+  it('search specific entry number', function() { //HORST5533
+    //WHEN
+    var result = tokenSearch.search('5533', { delimiter: /[\s-]+/ } );
+
+    //THEN
+    expect(result.length).to.equal(1);
+    expect(result[0].item.name).to.have.string('HORST-5533');
+  });
+
+  it('search specific entry, string whitespace number', function() { //HORST5533
+    //WHEN
+    var result = tokenSearch.search('ST 55', { delimiter: /[\s\-]+/ } );
+
+    //THEN
+    expect(result[0].item.name).to.have.string('HORST-5533');
+  });
+
   it('search entry with a pre search check', function() {
     //WHEN
     var precheck = function(entry) {
